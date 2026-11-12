@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>毎日カブ、ときどきメグロ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 土台はクロスカブのマットな緑、メグロの黒とクロームを差し色に、赤はロゴ1点だけ */
+:root{
+  --cub:#2b4740;          /* マットアーマードグリーンメタリック（実車写真から採色） */
+  --cub-deep:#1f342f;
+  --ink:#16171a;          /* メグロの黒 */
+  --chrome-1:#f4f5f6; --chrome-2:#a9adb2; --chrome-3:#6f7378;
+  --red:#b3262b;          /* メグロの赤 */
+  --red-on-ink:#e24a4f;   /* 黒の上で使う赤 */
+  --bg:#f2f4f2; --surface:#e6eae7; --fg:#1a1f1d; --muted:#56625d; --line:#cbd3cf;
+  --on-cub:#eef3f0;
+  --f-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101413; --surface:#18201d; --fg:#e4ebe7; --muted:#9caaa4; --line:#2a3531;
+  --cub:#34544b; --cub-deep:#1d2f2a; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101413; --surface:#18201d; --fg:#e4ebe7; --muted:#9caaa4; --line:#2a3531;
+  --cub:#34544b; --cub-deep:#1d2f2a; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.35;margin:0}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chrome-rule{height:3px;border:0;margin:0;background:linear-gradient(90deg,var(--chrome-3),var(--chrome-1) 35%,var(--chrome-2) 60%,var(--chrome-1) 80%,var(--chrome-3))}
+
+/* header */
+header.site{background:var(--ink);color:#e9eae4}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:.06em}
+.emblem{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,var(--chrome-1),var(--chrome-2) 55%,var(--chrome-3));box-shadow:inset 0 0 0 2px #2a2b2e}
+.emblem i{width:8px;height:8px;border-radius:50%;background:var(--red);display:block}
+nav.site{display:flex;gap:20px;flex-wrap:wrap;font-size:14px}
+nav.site a{color:#c9cbc2;text-decoration:none}
+nav.site a:hover,nav.site a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+
+/* hero */
+.hero{background:var(--cub);color:var(--on-cub);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 10%,rgba(255,255,255,.10),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding-block:72px 64px;align-items:end}
+.hero h1{font-size:clamp(26px,4.6vw,50px);font-weight:800;letter-spacing:.02em}
+.hero h1 span{display:block;white-space:nowrap}
+.hero h1 .k3{color:#e6e8eb;background:linear-gradient(180deg,#ffffff 15%,#cfd3d8 55%,#9ca1a7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lead{margin-top:20px;max-width:30em;color:#d9e3de}
+.hero .label{color:#b7c7c0}
+.count{background:var(--ink);color:#eceee6;border-radius:2px;padding:22px 24px;position:relative;border-top:3px solid var(--red)}
+.count::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--chrome-3),var(--chrome-1),var(--chrome-3))}
+.count .label{color:var(--red-on-ink)}
+.count .days{font-family:var(--f-mono);font-size:64px;line-height:1;margin-top:10px;font-variant-numeric:tabular-nums}
+.count .days small{font-size:16px;margin-left:6px;color:#b9bcb0}
+.count p{font-size:14px;color:#b9bcb0;margin-top:10px}
+
+section{padding-block:72px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.sec-head h2{font-size:clamp(24px,3.2vw,32px)}
+
+/* two bikes */
+.bikes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.bike{border:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;min-width:0}
+.bike .plate{height:120px;position:relative}
+.bike.cub .plate{background:var(--cub)}
+.bike.meg .plate{background:linear-gradient(180deg,#1a1b1e,#0c0d0f)}
+.bike.meg .plate::after{content:"";position:absolute;left:24px;right:24px;top:50%;height:22px;transform:translateY(-50%);border-radius:11px;background:linear-gradient(180deg,var(--chrome-1),var(--chrome-2) 50%,var(--chrome-3))}
+.bike.meg .plate::before{content:"";position:absolute;right:36px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:var(--red);z-index:1}
+.bike.cub .plate::after{content:"";position:absolute;left:24px;bottom:18px;width:64px;height:6px;background:rgba(255,255,255,.18)}
+.bike .body{padding:24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.bike h3{font-size:24px}
+.bike .role{font-weight:700}
+.bike.meg .role{color:var(--red)}
+.bike.meg{border-top:3px solid var(--red)}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px;margin:0}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* rule band */
+.rule-band{background:var(--ink);color:#e6e8df}
+.rule-band .wrap{padding-block:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rule-band .item{display:flex;gap:16px;align-items:flex-start}
+.rule-band .sw{flex:0 0 14px;height:14px;margin-top:7px;border-radius:2px}
+.rule-band p{color:#b9bcb0;font-size:14px}
+.rule-band strong{display:block;font-family:var(--f-display);font-size:20px;color:#f2f3ec}
+
+/* trips */
+.trips{display:grid;gap:0;border-top:1px solid var(--line)}
+.trip{display:grid;grid-template-columns:160px 1fr auto;gap:24px;padding-block:24px;border-bottom:1px solid var(--line);align-items:start}
+.trip .when{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.trip h3{font-size:20px}
+.trip p{color:var(--muted);margin-top:6px;font-size:15px;max-width:38em}
+.route{font-family:var(--f-mono);font-size:13px;margin-top:10px;color:var(--fg);overflow-wrap:anywhere}
+.tag{font-size:12px;padding:3px 10px;border-radius:999px;white-space:nowrap;border:1px solid var(--line)}
+.tag.done{background:var(--cub);color:var(--on-cub);border-color:transparent}
+.tag.plan{background:var(--ink);color:#e6e8df;border-color:transparent}
+.tag.plan::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--red-on-ink);margin-right:7px;vertical-align:middle}
+
+/* history */
+.history{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line)}
+.h{padding:20px 18px;border-right:1px solid var(--line);min-width:0}
+.h:last-child{border-right:0}
+.h .age{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.h strong{display:block;margin-top:6px;font-size:15px;line-height:1.5}
+.h .bar{display:block;height:30px;margin-bottom:14px;border-radius:2px;border:1px solid var(--line);position:relative;overflow:hidden}
+.h.now .bar,.h.next .bar{border-color:rgba(255,255,255,.28)}
+.h .col{display:block;margin-top:4px;font-size:12px;color:var(--muted)}
+.h.now .col{color:#c3d2cb}
+.h.next .col{color:#a7abb0}
+.bar.ape{background:#f7f7f4}
+.bar.ds{background:linear-gradient(180deg,#f7f7f4 0 46%,#b3262b 46% 52%,#f7f7f4 52% 60%,#b3262b 60% 64%,#f7f7f4 64%)}
+.bar.hd{background:linear-gradient(180deg,#f6f6f2 0 34%,#c9cdd2 34% 39%,#b0162a 39%,#7a0c19)}
+.bar.cub{background:linear-gradient(90deg,#2b4740 0 72%,#151617 72%)}
+.bar.meg{background:linear-gradient(180deg,#151618 0 32%,#f2f3f5 32%,#a9adb2 52%,#6f7378 68%,#151618 68%)}
+.bar.meg::after{content:"";position:absolute;right:10px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#d8343a}
+.memory{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:40px;align-items:center;margin-top:32px}
+.memory figure{margin:0;position:relative}
+.memory img{display:block;width:100%;height:auto;max-width:100%}
+.memory figure::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:linear-gradient(180deg,#f6f6f2 0 50%,#b0162a 50%)}
+.memory h3{font-size:22px;margin-top:8px}
+.memory p{color:var(--muted);margin-top:12px;max-width:30em}
+.h.now{background:var(--cub);color:var(--on-cub)}
+.h.now .age{color:#d1d5c2}
+.h.next{background:var(--ink);color:#eceee6}
+.h.next .age{color:var(--red-on-ink)}
+.h.next{box-shadow:inset 0 -3px 0 var(--red)}
+
+/* palette */
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.chip{border:1px solid var(--line);background:var(--surface)}
+.chip .c{height:72px}
+.chip .t{padding:12px 14px;font-size:13px}
+.chip .t b{display:block;font-size:14px}
+.chip .t span{color:var(--muted)}
+
+footer{background:var(--ink);color:#9ea295;font-size:13px}
+footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:48px}
+  .bikes,.rule-band .wrap{grid-template-columns:1fr}
+  .trip{grid-template-columns:1fr;gap:8px}
+  .history{grid-template-columns:1fr}
+  .h{border-right:0;border-bottom:1px solid var(--line)}
+  .h:last-child{border-bottom:0}
+  .palette{grid-template-columns:1fr 1fr}
+  .memory{grid-template-columns:1fr;gap:24px}
+  .memory img{aspect-ratio:4/5;object-fit:cover;object-position:50% 72%}
+  section{padding-block:52px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .count .days{transition:opacity .4s}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand"><span class="emblem" aria-hidden="true"><i></i></span>毎日カブ、ときどきメグロ</div>
+    <nav class="site" aria-label="サイト内">
+      <a href="#bikes">2台のこと</a>
+      <a href="#trips">旅の記録</a>
+      <a href="#history">バイク歴</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label">Cross Cub 110 × Meguro K3</div>
+      <h1><span>クロスカブ110×日常</span><span class="k3">メグロK3×特別</span></h1>
+      <p class="lead">バイク歴20年以上。あと何台の相棒に出会うことが出来るのか。まもなくお迎えするメグロK3に思いを馳せながら綴るクロスカブ110のある毎日。</p>
+    </div>
+    <div class="count" aria-live="polite">
+      <div class="label">メグロK3 納車まで</div>
+      <div class="days"><span id="days">—</span><small>日</small></div>
+      <p>2027年3月中旬の予定。それまではカブと一緒に、納車までの準備を記録します。</p>
+    </div>
+  </div>
+</div>
+<hr class="chrome-rule">
+
+<section id="bikes">
+  <div class="wrap">
+    <div class="sec-head"><h2>2台のこと</h2><span class="label">Two bikes, two roles</span></div>
+    <div class="bikes">
+      <article class="bike cub">
+        <div class="plate" aria-hidden="true"></div>
+        <div class="body">
+          <span class="label">Honda</span>
+          <h3>クロスカブ110</h3>
+          <p class="role">頼れる相棒</p>
+          <p>走行距離50,000kmを超えました。旅も日常生活も、この1台とともに。</p>
+          <dl class="spec">
+            <dt>カラー</dt><dd>マットアーマードグリーンメタリック</dd>
+            <dt>走行距離</dt><dd>50,000km超</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="bike meg">
+        <div class="plate" aria-hidden="true"></div>
+        <div class="body">
+          <span class="label">Kawasaki</span>
+          <h3>メグロK3</h3>
+          <p class="role">歴史と伝統</p>
+          <p>知らないまま出会い衝撃をうける。「これに乗りたい」そう思い3年。いよいよ納車の時が迫る。。。</p>
+          <dl class="spec">
+            <dt>納車</dt><dd>2027年3月中旬（予定）</dd>
+            <dt>役割</dt><dd>週末・ツーリング・特別な日</dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="rule-band">
+  <div class="wrap">
+    <div class="item"><span class="sw" style="background:var(--cub)"></span><div><strong>日常はカブ</strong><p>調子がいいとリッター70kmを超える優等生</p></div></div>
+    <div class="item"><span class="sw" style="background:linear-gradient(135deg,var(--chrome-1),var(--chrome-3))"></span><div><strong>特別な日はメグロ</strong><p>歴史あるレトロバイクでどこまでも</p></div></div>
+  </div>
+</div>
+
+<section id="trips">
+  <div class="wrap">
+    <div class="sec-head"><h2>旅の記録</h2><span class="label">Touring log</span></div>
+    <div class="trips">
+      <article class="trip">
+        <div class="when">2026.04–05</div>
+        <div>
+          <h3>しまなみ海道から呉へ、カブで2泊</h3>
+          <p>相棒と2人、クロスカブ110で瀬戸内を渡った旅。島を渡り、フェリーで本州へ。大和ミュージアムまで走りきりました。</p>
+          <div class="route">砥部町 → しまなみ海道 → 大三島 → 盛港フェリー → 広島 → 呉</div>
+        </div>
+        <span class="tag done">走った</span>
+      </article>
+      <article class="trip">
+        <div class="when">2027 以降</div>
+        <div>
+          <h3>メグロの聖地、那須烏山へ</h3>
+          <p>納車したら行きたい場所。メグロ・キャノンボール那須烏山への参加も考えています。帰りに大田原の那須ファームビレッジにも寄りたい。</p>
+          <div class="route">松山 → 栃木県 那須烏山市 → 大田原市</div>
+        </div>
+        <span class="tag plan">計画中</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="history" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>バイク歴</h2><span class="label">Since 19</span></div>
+    <div class="history">
+      <div class="h"><span class="bar ape" aria-hidden="true"></span><div class="age">19歳</div><strong>ホンダ エイプ50</strong><span class="col">ホワイト</span></div>
+      <div class="h"><span class="bar ds" aria-hidden="true"></span><div class="age">21歳</div><strong>ヤマハ ドラッグスター クラシック400</strong><span class="col">ホワイトに赤のピンストライプ</span></div>
+      <div class="h"><span class="bar hd" aria-hidden="true"></span><div class="age">29歳</div><strong>ハーレーダビッドソン ソフテイルデラックス</strong><span class="col">キャンディレッド×ホワイト</span></div>
+      <div class="h now"><span class="bar cub" aria-hidden="true"></span><div class="age">41歳</div><strong>ホンダ クロスカブ110</strong><span class="col">マットアーマードグリーンメタリック</span></div>
+      <div class="h next"><span class="bar meg" aria-hidden="true"></span><div class="age">43歳</div><strong>カワサキ メグロK3</strong><span class="col">黒×銀×赤</span></div>
+    </div>
+    <div class="memory">
+      <figure><img src="img/softail.jpg" alt="青い海と空を背に停めた、キャンディレッドとホワイトのソフテイルデラックスを後ろから見た写真" width="900" height="1599" loading="lazy"></figure>
+      <div>
+        <span class="label">Since 29</span>
+        <h3>ハーレーダビッドソン ソフテイルデラックス</h3>
+        <p>29歳、ハーレーデビュー。きっかけはショッピングモールの展示会。一目惚れし、購入後大型免許取得へ。気品溢れる美術品。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<hr class="chrome-rule">
+<footer>
+  <div class="wrap"><span>毎日カブ、ときどきメグロ</span><span>試作版 2026.11</span></div>
+</footer>
+
+<script>
+(function(){
+  var target=new Date(2027,2,15);
+  var now=new Date();
+  var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var d=Math.round((target-today)/86400000);
+  var el=document.getElementById('days');
+  if(el) el.textContent = d>0 ? d : '納車済み';
+})();
+</script>
+</body>
+</html>
