@@ -142,6 +142,15 @@ section{padding-block:72px}
 .chip .t b{display:block;font-size:14px}
 .chip .t span{color:var(--muted)}
 
+/* story */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.story figure{margin:0;background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);padding:20px;position:sticky;top:24px}
+.story img{display:block;width:100%;height:auto}
+.story h3{font-size:clamp(22px,2.6vw,28px)}
+.story .text p{margin-top:14px;max-width:34em}
+.story .text p.gap{margin-top:36px}
+.story .text p.shout{font-family:var(--f-display);font-weight:800;font-size:clamp(20px,2.4vw,24px);line-height:1.5;color:var(--red);margin-block:28px;word-break:auto-phrase;text-wrap:balance}
+
 footer{background:var(--ink);color:#9ea295;font-size:13px}
 footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -154,6 +163,8 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:1
   .h:last-child{border-bottom:0}
   .palette{grid-template-columns:1fr 1fr}
   .memory{grid-template-columns:1fr;gap:24px}
+  .story{grid-template-columns:1fr;gap:28px}
+  .story figure{position:static;padding:12px}
   .memory img{aspect-ratio:4/5;object-fit:cover;object-position:50% 72%}
   section{padding-block:52px}
 }
@@ -169,6 +180,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:1
     <div class="brand"><span class="emblem" aria-hidden="true"><i></i></span>毎日カブ、ときどきメグロ</div>
     <nav class="site" aria-label="サイト内">
       <a href="#bikes">2台のこと</a>
+      <a href="#meguro">出会い</a>
       <a href="#trips">旅の記録</a>
       <a href="#history">バイク歴</a>
     </nav>
@@ -231,6 +243,29 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:1
     <div class="item"><span class="sw" style="background:linear-gradient(135deg,var(--chrome-1),var(--chrome-3))"></span><div><strong>特別な日はメグロ</strong><p>歴史あるレトロバイクでどこまでも</p></div></div>
   </div>
 </div>
+
+<section id="meguro">
+  <div class="wrap">
+    <div class="sec-head"><h2>メグロK3との出会い</h2><span class="label">First encounter</span></div>
+    <div class="story">
+      <figure><img src="img/meguro-k3.webp" alt="黒いタンクとクロームのエンジンが輝くメグロK3を、斜め前から描いたイラスト" width="1312" height="1199" loading="lazy"></figure>
+      <div class="text">
+        <h3>実はまだ…</h3>
+        <p>メグロK3は購入していません。</p>
+        <p>ふらっと訪ねたカワサキプラザ。W800を見に行ったんです。実車を見ながら「いい雰囲気のバイクだな」と思っていると、「音、聞いてみますか？」</p>
+        <p>正直、そこまで気分は乗っていなくて遠慮しようかなと思いつつ、断りきれず外に出ることになり…</p>
+        <p>「これは、兄弟車みたいなもので音は同じなので〜」</p>
+        <p>僕はそれ以降の説明を聞いていませんでした。<br>目の前のバイクから目が離せませんでした。</p>
+        <p>レトロな雰囲気と重厚感。後に知ることになる銀鏡塗装の美しさ。そしてタンクに張り付いているロゴの美しさ、ワンポイントの赤色に、カタカナのメグロロゴ。その全てに一瞬で魅了されていました。</p>
+        <p class="shout">「こ、このバイクはなんていうバイクですかっ？？」</p>
+        <p class="gap">それが僕とメグロK3の初めての出会いです。</p>
+        <p>それから3年。<br>ただひたすらメグロK3を調べて追って、憧れて、迷走して、迷いつつも、また戻り。</p>
+        <p>年明けには契約を交わし、3月の納車を目指します。</p>
+        <p>どういった結末になるかはわかりませんが、良き相棒として僕の横にいる未来を目指し邁進しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="trips">
   <div class="wrap">
