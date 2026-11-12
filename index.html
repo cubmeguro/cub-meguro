@@ -50,7 +50,15 @@ nav.site a:hover,nav.site a:focus-visible{color:#fff;text-decoration:underline;t
 /* hero */
 .hero{background:var(--cub);color:var(--on-cub);position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 85% 10%,rgba(255,255,255,.10),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.025) 0 2px,transparent 2px 5px);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding-block:72px 64px;align-items:end}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:"intro rider" "count rider";column-gap:56px;row-gap:32px;padding-block:72px 64px;align-items:end}
+.hero .intro{grid-area:intro}
+.hero .count{grid-area:count;max-width:440px}
+/* 自分のイラストは、タンクに貼ったステッカーのように */
+.rider{grid-area:rider;align-self:center;margin:0;background:#fff;padding:18px 18px 0;border-radius:6px;transform:rotate(-2.5deg);box-shadow:0 1px 0 rgba(0,0,0,.25),0 18px 40px -12px rgba(0,0,0,.55);position:relative}
+.rider::before{content:"";position:absolute;top:-12px;left:50%;width:96px;height:24px;margin-left:-48px;transform:rotate(3deg);background:rgba(233,236,231,.78);box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.rider img{display:block;width:100%;height:auto}
+.rider figcaption{display:flex;align-items:center;gap:10px;margin:12px -18px 0;padding:10px 18px;background:var(--ink);color:#e6e8df;border-radius:0 0 6px 6px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.rider .dot{width:8px;height:8px;border-radius:50%;background:var(--red-on-ink);flex:none}
 .hero h1{font-size:clamp(26px,4.6vw,50px);font-weight:800;letter-spacing:.02em}
 .hero h1 span{display:block;white-space:nowrap}
 .hero h1 .k3{color:#e6e8eb;background:linear-gradient(180deg,#ffffff 15%,#cfd3d8 55%,#9ca1a7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -165,7 +173,10 @@ footer{background:var(--ink);color:#9ea295;font-size:13px}
 footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:760px){
-  .hero .wrap{grid-template-columns:1fr;padding-block:48px}
+  .hero .wrap{grid-template-columns:1fr;grid-template-areas:"intro" "rider" "count";padding-block:48px;row-gap:36px}
+  .rider{transform:rotate(-1.5deg);max-width:440px;width:calc(100% - 8px);justify-self:center;padding:12px 12px 0}
+  .rider figcaption{margin-inline:-12px;padding-inline:12px}
+  .hero .count{max-width:none}
   .bikes,.rule-band .wrap{grid-template-columns:1fr}
   .trip{grid-template-columns:1fr;gap:8px}
   .history{grid-template-columns:1fr}
@@ -199,7 +210,7 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:1
 
 <div class="hero">
   <div class="wrap">
-    <div>
+    <div class="intro">
       <div class="label">Cross Cub 110 × Meguro K3</div>
       <h1><span>クロスカブ110×日常</span><span class="k3">メグロK3×特別</span></h1>
       <p class="lead">バイク歴20年以上。あと何台の相棒に出会うことが出来るのか。まもなくお迎えするメグロK3に思いを馳せながら綴るクロスカブ110のある毎日。</p>
@@ -209,6 +220,10 @@ footer .wrap{padding-block:28px;display:flex;justify-content:space-between;gap:1
       <div class="days"><span id="days">—</span><small>日</small></div>
       <p>2027年3月中旬の予定。それまではカブと一緒に、納車までの準備を記録します。</p>
     </div>
+    <figure class="rider">
+      <img src="img/rider.png" alt="眼鏡に黒いパーカー姿でクロスカブ110にまたがり、こちらに手を振る筆者のイラスト" width="1217" height="1070">
+      <figcaption><span class="dot" aria-hidden="true"></span>Me &amp; my Cross Cub 110</figcaption>
+    </figure>
   </div>
 </div>
 <hr class="chrome-rule">
