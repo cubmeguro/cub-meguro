@@ -10,24 +10,24 @@
 <style>
 /* 土台はクロスカブのマットな緑、メグロの黒とクロームを差し色に、赤はロゴ1点だけ */
 :root{
-  --cub:#2b4740;          /* マットアーマードグリーンメタリック（実車写真から採色） */
-  --cub-deep:#1f342f;
+  --cub:#4f5541;          /* クロスカブ110の純正色「マットアーマードグリーンメタリック」に寄せたオリーブ */
+  --cub-deep:#363b2c;
   --ink:#16171a;          /* メグロの黒 */
   --chrome-1:#f4f5f6; --chrome-2:#a9adb2; --chrome-3:#6f7378;
   --red:#b3262b;          /* メグロの赤 */
   --red-on-ink:#e24a4f;   /* 黒の上で使う赤 */
-  --bg:#f2f4f2; --surface:#e6eae7; --fg:#1a1f1d; --muted:#56625d; --line:#cbd3cf;
-  --on-cub:#eef3f0;
+  --bg:#f3f3ee; --surface:#e8e8df; --fg:#1c1e18; --muted:#5b5e4f; --line:#d2d2c6;
+  --on-cub:#f0f1e8;
   --f-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
   --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#101413; --surface:#18201d; --fg:#e4ebe7; --muted:#9caaa4; --line:#2a3531;
-  --cub:#34544b; --cub-deep:#1d2f2a; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}}
+  --bg:#121310; --surface:#1c1d17; --fg:#e9eae1; --muted:#a6a897; --line:#31332a;
+  --cub:#4a503d; --cub-deep:#2b2f23; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#101413; --surface:#18201d; --fg:#e4ebe7; --muted:#9caaa4; --line:#2a3531;
-  --cub:#34544b; --cub-deep:#1d2f2a; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}
+  --bg:#121310; --surface:#1c1d17; --fg:#e9eae1; --muted:#a6a897; --line:#31332a;
+  --cub:#4a503d; --cub-deep:#2b2f23; --on-cub:#f1f2ea; --red:#d8474b; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.8}
@@ -62,8 +62,8 @@ nav.site a:hover,nav.site a:focus-visible{color:#fff;text-decoration:underline;t
 .hero h1{font-size:clamp(26px,4.6vw,50px);font-weight:800;letter-spacing:.02em}
 .hero h1 span{display:block;white-space:nowrap}
 .hero h1 .k3{color:#e6e8eb;background:linear-gradient(180deg,#ffffff 15%,#cfd3d8 55%,#9ca1a7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p.lead{margin-top:20px;max-width:30em;color:#d9e3de}
-.hero .label{color:#b7c7c0}
+.hero p.lead{margin-top:20px;max-width:30em;color:#e1e3d6}
+.hero .label{color:#c4c8b4}
 .count{background:var(--ink);color:#eceee6;border-radius:2px;padding:22px 24px;position:relative;border-top:3px solid var(--red)}
 .count::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--chrome-3),var(--chrome-1),var(--chrome-3))}
 .count .label{color:var(--red-on-ink)}
@@ -122,12 +122,12 @@ section{padding-block:72px}
 .h .bar{display:block;height:30px;margin-bottom:14px;border-radius:2px;border:1px solid var(--line);position:relative;overflow:hidden}
 .h.now .bar,.h.next .bar{border-color:rgba(255,255,255,.28)}
 .h .col{display:block;margin-top:4px;font-size:12px;color:var(--muted)}
-.h.now .col{color:#c3d2cb}
+.h.now .col{color:#d0d3c0}
 .h.next .col{color:#a7abb0}
 .bar.ape{background:#f7f7f4}
 .bar.ds{background:linear-gradient(180deg,#f7f7f4 0 46%,#b3262b 46% 52%,#f7f7f4 52% 60%,#b3262b 60% 64%,#f7f7f4 64%)}
 .bar.hd{background:linear-gradient(180deg,#f6f6f2 0 34%,#c9cdd2 34% 39%,#b0162a 39%,#7a0c19)}
-.bar.cub{background:linear-gradient(90deg,#2b4740 0 72%,#151617 72%)}
+.bar.cub{background:linear-gradient(90deg,#4f5541 0 72%,#151617 72%)}
 .bar.meg{background:linear-gradient(180deg,#151618 0 32%,#f2f3f5 32%,#a9adb2 52%,#6f7378 68%,#151618 68%)}
 .bar.meg::after{content:"";position:absolute;right:10px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#d8343a}
 .memory{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:40px;align-items:center;margin-top:32px}
